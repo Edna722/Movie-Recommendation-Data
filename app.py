@@ -53,13 +53,33 @@ def hybrid_recommendations(title, cosine_sim2, movies_credits):
 
 st.header('Movie Recommender System')
 
-# Absolute paths to the data files
-tmdb_movies_path = r"C:\Users\wanji\OneDrive\Desktop\Movie Recommender\Movie-Recommendation-Data\.data\tmdb_5000_movies.csv"
-tmdb_credits_path = r"C:\Users\wanji\OneDrive\Desktop\Movie Recommender\Movie-Recommendation-Data\.data\tmdb_5000_credits.csv"
+import os
 
-# Read the CSV files
-tmdb_movies = pd.read_csv(tmdb_movies_path)
-tmdb_credits = pd.read_csv(tmdb_credits_path)
+# Use relative paths
+tmdb_movies_path = '.data/tmdb_5000_movies.csv'
+tmdb_credits_path = '.data/tmdb_5000_credits.csv'
+
+# Print current working directory and file paths for debugging
+print("Current Working Directory:", os.getcwd())
+print("Movies Path:", tmdb_movies_path)
+print("Credits Path:", tmdb_credits_path)
+
+# Check if files exist before loading
+if os.path.isfile(tmdb_movies_path) and os.path.isfile(tmdb_credits_path):
+    # Load the datasets
+    tmdb_movies = pd.read_csv(tmdb_movies_path)
+    tmdb_credits = pd.read_csv(tmdb_credits_path)
+
+    # Display a sample of the data to verify successful loading
+    print("Movies DataFrame:")
+    print(tmdb_movies.head())
+
+    print("\nCredits DataFrame:")
+    print(tmdb_credits.head())
+else:
+    st.error("Error: One or both of the files not found.")
+    st.stop()
+
 
 # Drop the Title column in Movies Dataset
 tmdb_movies.drop(['title'], axis=1, inplace=True)
