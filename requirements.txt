@@ -1,2 +1,9 @@
+<<<<<<< HEAD
 Flask==2.0.1
 requests==2.26.0
+=======
+Flask==2.0.1
+requests==2.26.0
+streamlit>=1.15.2
+scikit-learn>=0.24.0
+>>>>>>> 172e4e7238d028219c55a58d059e0c5120281479
