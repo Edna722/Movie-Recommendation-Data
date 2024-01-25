@@ -246,4 +246,4 @@ if st.button('Show Recommendation'):
                 st.text(title)
                 st.image(fetch_poster(movie['id']))
             columns = columns[1:] + [columns[0]]
->>>>>>> 172e4e7238d028219c55a58d059e0c5120281479
+
